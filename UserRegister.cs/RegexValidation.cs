@@ -23,8 +23,10 @@ namespace RegexUserValidation
             string lastName = Console.ReadLine();
             return Regex.IsMatch(lastName, LAST_NAME_REGEX);
         }
-	public bool ValidateEmail(string email)
+	public bool ValidateEmail()
         {
+            Console.WriteLine("Enter the email id: ");
+            string email = Console.ReadLine();
             return Regex.IsMatch(email, EMAIL_REGEX);
         }
 	public bool ValidateMobileNumber()
