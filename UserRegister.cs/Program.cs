@@ -1,6 +1,6 @@
 using System;
 namespace RegexUserValidation
-{
+ {
     class Program
     {
         static void Main(string[] args)
@@ -9,9 +9,11 @@ namespace RegexUserValidation
             bool validResult = regex.ValidateFirstName();
 	    bool validLastNameResult = regex.ValidateLastName();
 	    bool validEmail = regex.ValidateEmail();
+	    bool validNumber = regex.ValidateMobileNumber();
             Console.WriteLine("First name: " + validResult);
 	    Console.WriteLine("Last name: " + validLastNameResult);
 	    Console.WriteLine("Email: " + validEmail);
+	    Console.WriteLine("Mobile number: " + validNumber);
             Console.ReadKey();
         }
     }
