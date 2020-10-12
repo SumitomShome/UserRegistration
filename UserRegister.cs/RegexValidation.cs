@@ -13,33 +13,63 @@ namespace RegexUserValidation
 	public static string PASSWORD_REGEX = "(?=.*?[._+-@#&*$])(?=.*[A-Z])(?=.*[0-9])([0-9a-zA-z]{7,})"
         public bool ValidateFirstName()
         {
-            Console.WriteLine("Enter first name: ");
-            string firstName = Console.ReadLine();
-            return Regex.IsMatch(firstName, FIRST_NAME_REGEX);
+            string firstName = "Sumitom";
+            if (Regex.IsMatch(firstName, FIRST_NAME_REGEX))
+            {
+                return true;
+            }
+            else
+            {
+                throw new URCustomException(URCustomException.ExceptionType.INVALID_FIRST_NAME, "Invalid first name");
+            }
         }
-	public bool ValidateLastName()
+        public bool ValidateLastName()
         {
-            Console.WriteLine("Enter last name: ");
-            string lastName = Console.ReadLine();
-            return Regex.IsMatch(lastName, LAST_NAME_REGEX);
+            string lastName = "Shome";
+            if (Regex.IsMatch(lastName, LAST_NAME_REGEX))
+            {
+                return true;
+            }
+            else
+            {
+                throw new URCustomException(URCustomException.ExceptionType.INVALID_LAST_NAME, "Invalid last name");
+            }
         }
-	public bool ValidateEmail()
+        public bool ValidateEmail(string email)
         {
-            Console.WriteLine("Enter the email id: ");
-            string email = Console.ReadLine();
-            return Regex.IsMatch(email, EMAIL_REGEX);
+            RegexValidation regex = new RegexValidation();
+            if (Regex.IsMatch(email, EMAIL_REGEX))
+            {
+                return true;
+            }
+            else
+            {
+                throw new URCustomException(URCustomException.ExceptionType.INVALID_EMAIL, "Invalid email");
+            }
         }
-	public bool ValidateMobileNumber()
+        public bool ValidateMobileNumber()
         {
-            Console.WriteLine("Enter country code, then give space and then provide 10 digit mobile number: ");
-            string mobile = Console.ReadLine();
-            return Regex.IsMatch(mobile, MOBILE_REGEX);
+            string mobile = "91 9433430056";
+            if (Regex.IsMatch(mobile, MOBILE_REGEX))
+            {
+                return true;
+            }
+            else
+            {
+                throw new URCustomException(URCustomException.ExceptionType.INVALID_MOBILE_NUMBER, "Invalid mobile number");
+            }
         }
-	public bool ValidatePassword()
+        public bool ValidatePassword()
         {
-            Console.WriteLine("Enter your password");
-            string password = Console.ReadLine();
-            return Regex.IsMatch(password, PASSWORD_REGEX);
+            string password = "Sa@124534";
+            if (Regex.IsMatch(password, PASSWORD_REGEX))
+            {
+                return true;
+            }
+            else
+            {
+                throw new URCustomException(URCustomException.ExceptionType.INVALID_PASSWORD, "Invalid password");
+            }
         }
     }
 }
