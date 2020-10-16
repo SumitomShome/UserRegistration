@@ -1,41 +1,93 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using RegexUserValidation;
 namespace RegexUserValidation
 {
     [TestClass]
     public class UnitTest1
     {
+        //Happy Test Cases
         [TestMethod]
-        public void TestMethod1()
+        public void GivenUserFirstNameWhenValidatedShouldReturnTrue()
         {
-            RegexValidation regex = new RegexValidation();
-            regex.ValidateFirstName();
-            regex.ValidateLastName();
-            regex.ValidateMobileNumber();
-            regex.ValidatePassword();
+            RegexValidation user = new RegexValidation();
+            string firstName = "Sumitom";
+            bool result = user.ValidateFirstName(firstName);
+            Assert.IsTrue(result);
         }
-        [DataRow("abc@yahoo.com")]
-        [DataRow("abc-100@yahoo.com")]
-        [DataRow("abc.100@yahoo.com")]
-        [DataRow("abc111@abc.com")]
-        [DataRow("abc-100@abc.net")]
-        [DataRow("abc.100@abc.com.au")]
-        [DataRow("abc@1.com")]
-        [DataRow("abc@gmail.com.com")]
-        [DataRow("abc+100@gmail.com")]
-        public bool ValidateEmail(string email)
+        [TestMethod]
+        public void GivenUserLastNameWhenValidatedShouldReturnTrue()
         {
-            string EMAIL_REGEX = "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9a-zA-Z]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2})?$";
-            RegexValidation regex = new RegexValidation();
-            if (Regex.IsMatch(email, EMAIL_REGEX))
-            {
-                return true;
-            }
-            else
-            {
-                throw new URCustomException(URCustomException.ExceptionType.INVALID_EMAIL, "Invalid email");
-            }
+            RegexValidation user = new RegexValidation();
+            string lastName = "Shome";
+            bool result = user.ValidateLastName(lastName);
+            Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void GivenUserEmailIDWhenValidatedShouldReturnTrue()
+        {
+            RegexValidation user = new RegexValidation();
+            string email = "sumitomshome@gmail.com";
+            bool result = user.ValidateEmail(email);
+            Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void GivenUserMobileNumberWhenValidatedShouldReturnTrue()
+        {
+            RegexValidation user = new RegexValidation();
+            string mobileNumber = "91 9433430056";
+            bool result = user.ValidateMobileNumber(mobileNumber);
+            Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void GivenUserPasswordWhenValidatedShouldReturnTrue()
+        {
+            RegexValidation user = new RegexValidation();
+            string password = "8S@99SSaa";
+            bool result = user.ValidatePassword(password);
+            Assert.IsTrue(result);
+        }
+        //Sad Test Cases
+        [TestMethod]
+        public void GivenUserFirstNameWhenValidatedShouldReturnFalse()
+        {
+            RegexValidation user = new RegexValidation();
+            string firstName = "sumitom";
+            bool result = user.ValidateFirstName(firstName);
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenUserLastNameWhenValidatedShouldReturnFalse()
+        {
+            RegexValidation user = new RegexValidation();
+            string lastName = "shome";
+            bool result = user.ValidateLastName(lastName);
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenUserEmailIDWhenValidatedShouldReturnFalse()
+        {
+            RegexValidation user = new RegexValidation();
+            string email = "sumitomshome";
+            bool result = user.ValidateEmail(email);
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenUserMobileNumberWhenValidatedShouldReturnFalse()
+        {
+            RegexValidation user = new RegexValidation();
+            string mobileNumber = "91 94";
+            bool result = user.ValidateMobileNumber(mobileNumber);
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenUserPasswordWhenValidatedShouldReturnFalse()
+        {
+            RegexValidation user = new RegexValidation();
+            string password = "@S";
+            bool result = user.ValidatePassword(password);
+            Assert.IsFalse(result);
         }
     }
 }
